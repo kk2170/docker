@@ -1,0 +1,14 @@
+sudo: required
+
+language: perl
+
+services:
+  - docker
+
+before_install:
+- curl -L https://cpanmin.us | perl - --sudo App::cpanminus
+- cpanm --local-lib=~/perl5 local::lib && echo "eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)" >> ~/.bashrc && source ~/.bashrc
+- cd ~/docker/test && cpanm --installdeps .
+
+script:
+- cd ~/docker/test && ./build.pl
