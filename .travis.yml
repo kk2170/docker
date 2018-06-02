@@ -12,4 +12,4 @@ before_install:
   - cd test && cpanm --installdeps .
 
 script:
-  - cd test && ./build.pl
+  - ./build.pl
